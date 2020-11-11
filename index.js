@@ -6,7 +6,7 @@ document.addEventListener('click', function(){
 
 // Executed only when the time strikes 00 minutes and 00 seconds - once an hour
 const soundHorn = (time) =>{
-    document.querySelector('#timeText h1').textContent = `${time.hours}:${time.minutes}:${time.seconds}`;
+    document.querySelector('#timeText h1').textContent = `${('0'+time.hours).slice(-2)}:${('0'+time.minutes).slice(-2)}:${('0'+time.seconds).slice(-2)}`;
     document.querySelector('#timeText h1').style.display = 'block';
     document.getElementById('horn').play()
     document.querySelector('#timeText h1').classList.add('animateText')
