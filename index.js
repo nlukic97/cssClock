@@ -5,8 +5,8 @@ document.addEventListener('click', function(){
 })
 
 // Executed only when the time strikes 00 minutes and 00 seconds - once an hour
-const soundHorn = () =>{
-    document.querySelector('#timeText h1').textContent = `17:00:00`;
+const soundHorn = (time) =>{
+    document.querySelector('#timeText h1').textContent = `${time.hours}:${time.minutes}:${time.seconds}`;
     document.querySelector('#timeText h1').style.display = 'block';
     document.getElementById('horn').play()
     document.querySelector('#timeText h1').classList.add('animateText')
@@ -29,14 +29,17 @@ const getTime = () =>{
 
 //making digital clock from time given (performed in the seconds function)
 const updateDigitalClock = (time) =>{
-  document.getElementById('digitalTime').textContent = `${time.hours}:${('0' + time.minutes).slice(-2)}:${('0' + time.seconds).slice(-2)}`
+  document.getElementById('digitalTime').textContent = `${('0' + time.hours).slice(-2)}:${('0' + time.minutes).slice(-2)}:${('0' + time.seconds).slice(-2)}`
 }
 
 // updates the message informing us at what time will the user hear the horn (activation of the soundHorn() method)
 const updateInfoMsg = (time)=>{
-  console.log(time);
-  var hours = (time.hours === 23) ? '00' : time.hours + 1;
-  document.getElementById('timeMessage').textContent = `Something cool will happen at: ${hours}:00:00 ... what could it be ?`;
+//   var hours = (time.hours === 23) ? '00' : time.hours + 1;
+//   document.getElementById('timeMessage').textContent = `Something cool will happen at: ${hours}:00:00 ... what could it be ?`;
+
+    var seconds = 60 - time.seconds;
+    document.getElementById('timeMessage').textContent = `Something cool will happen in: ${seconds} seconds ... what could it be ?`;
+
 }
 
 // --------- transform function for our all three of our dials
@@ -77,8 +80,12 @@ const hourHand = (theTime, whichHand) => {
   var interval = setInterval(()=>{
     var currentTime = getTime()
 
-    if(currentTime.minutes === 0 && currentTime.seconds === 0 && interaction === true){
-      soundHorn()
+    // if(currentTime.minutes === 0 && currentTime.seconds === 0 && interaction === true){
+    //   soundHorn()
+    // }
+
+    if(currentTime.seconds === 0 && interaction === true){
+        soundHorn(currentTime)
     }
 
     updateDigitalClock(currentTime)
