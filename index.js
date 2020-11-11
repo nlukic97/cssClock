@@ -4,6 +4,12 @@ document.addEventListener('click', function(){
   interaction = true;
 })
 
+//so that the sound could be played
+document.getElementById('btn').addEventListener('click',function(){
+    document.getElementById('btn').remove()
+    document.getElementById('btnContainer').remove()
+})
+
 // Executed only when the time strikes 00 minutes and 00 seconds - once an hour
 const soundHorn = (time) =>{
     document.querySelector('#timeText h1').textContent = `${('0'+time.hours).slice(-2)}:${('0'+time.minutes).slice(-2)}:${('0'+time.seconds).slice(-2)}`;
@@ -14,6 +20,11 @@ const soundHorn = (time) =>{
       document.querySelector('#timeText h1').style.display = 'none';
       document.querySelector('#timeText h1').classList.remove('animateText')
     },2800)
+}
+
+//plays the saw theme song
+const soundSaw = () =>{
+    document.getElementById('saw').play()
 }
 
 // --- called 
@@ -84,8 +95,13 @@ const hourHand = (theTime, whichHand) => {
     //   soundHorn()
     // }
 
-    if(currentTime.seconds === 0 && interaction === true){
+    // if(currentTime.seconds === 0 && interaction === true){
+    if(currentTime.seconds === 0){
         soundHorn(currentTime)
+    }
+
+    if(currentTime.seconds === 28){
+        soundSaw()
     }
 
     updateDigitalClock(currentTime)
