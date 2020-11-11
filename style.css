@@ -1,0 +1,159 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding:0;
+  background-color: rgb(26, 26, 26);
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+section #circle {
+  width:400px;
+  height: 400px;
+  min-width:400px;
+  min-height: 400px;
+  border:15px solid #6c6060;
+  background: rgb(124,124,124);
+  background: linear-gradient(34deg, rgba(124,124,124,1) 0%, rgba(175,171,191,1) 50%);
+  border-radius: 50%;
+  position: relative;
+}
+section #circle #innerCircle {
+  width:15px;
+  height: 15px;
+  background-color: #4a4242;
+  border-radius: 50%;
+  position: absolute;
+  top:calc(50% - 7.5px);
+  left:calc(50% - 7.5px);
+  z-index: 3;
+}
+
+
+/* ---------- seconds hand---------- */
+section #circle #secondHand {
+  height:90%;
+  width: 3px;
+  left:calc(50% - 3px);
+  top:calc(5%);
+  position: absolute;
+  transform: rotate(0deg);
+  background-color: transparent;
+}
+
+section #circle #secondHand #black {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: black;
+  bottom:calc(50%);
+}
+section #circle #secondHand #color {
+  position: absolute;
+  width: 1px;
+  height: calc(50%);
+  background-color: red;
+  bottom:calc(50%);
+}
+
+/* ------ Minute hand -------- */
+section #circle #minuteHand {
+  height:90%;
+  width: 3px;
+  left:calc(50% - 3px);
+  top:calc(5%);
+  position: absolute;
+  transform: rotate(0deg);
+  background-color: transparent;
+}
+
+section #circle #minuteHand #black {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: black;
+  bottom:calc(50%);
+}
+section #circle #minuteHand #color {
+  position: absolute;
+  width: 3px;
+  height: calc(50%);
+  background-color: rgb(108, 108, 108);
+  bottom:calc(50%);
+}
+
+/* ------- hour hand ---------- */
+section #circle #hourHand {
+  height:50%;
+  width: 3px;
+  left:calc(50% - 3px);
+  top:calc(25%);
+  position: absolute;
+  transform: rotate(0deg);
+  background-color: transparent;
+}
+
+section #circle #hourHand #black {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: black;
+  bottom:calc(50%);
+}
+section #circle #hourHand #color {
+  position: absolute;
+  width: 3px;
+  height: calc(50%);
+  background-color: rgb(108, 108, 108);
+  bottom:calc(50%);
+}
+
+#timeText {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+
+}
+
+#timeText h1 {
+  text-align: center;
+  padding:25%;
+  font-family: 'Arial';
+  font-size:1px;
+  display: none;
+}
+
+.animateText {
+  animation: animateTime 3s linear;
+}
+
+@keyframes animateTime{
+  0% {font-size:1px;}
+  1% {font-size:1px;}
+  50% {font-size: 3rem;}
+  99% {font-size: 1px;}
+}
+
+/* ----------------------- Digital clock ----------------------- */
+#digitalTime {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 40px;
+  padding:0;
+  margin: 10px 0 0;
+  color:rgba(255, 255, 255, 0.79);
+}
+
+#timeMessage {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  padding:0;
+  margin: 10px 0 0;
+  color:rgb(148, 148, 148);
+  font-weight: normal;
+}

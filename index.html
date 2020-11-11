@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio src="./audio/horn.mp3" id="horn"></audio>
+  <div id="timeText">
+    <h1>Time</h1>
+  </div>
+  <section>
+    <div id="circle">
+      <div id="innerCircle"></div>
+      <div id="secondHand">
+        <div id="color"></div>
+        <div id="black"></div>
+      </div>
+      <div id="minuteHand">
+        <div id="color"></div>
+        <div id="black"></div>
+      </div>
+      <div id="hourHand">
+        <div id="color"></div>
+        <div id="black"></div>
+      </div>
+    </div>
+  </section>
+  <h4 id="digitalTime">00:00:00</h4>
+  <h5 id="timeMessage"></h5>
+  <script src="index.js"></script>
+</body>
+</html>
