@@ -1,8 +1,5 @@
 var interaction = false;
-
-document.addEventListener('click', function(){
-  interaction = true;
-})
+var playable = false;
 
 //so that the sound could be played
 document.getElementById('btn').addEventListener('click',function(){
@@ -45,12 +42,14 @@ const updateDigitalClock = (time) =>{
 }
 
 // updates the message informing us at what time will the user hear the horn (activation of the soundHorn() method)
-const updateInfoMsg = (time)=>{
-//   var hours = (time.hours === 23) ? '00' : time.hours + 1;
-//   document.getElementById('timeMessage').textContent = `Something cool will happen at: ${hours}:00:00 ... what could it be ?`;
-
+const updateInfoMsg = (time, start)=>{
     var seconds = 60 - time.seconds;
-    document.getElementById('timeMessage').textContent = `Something cool will happen in: ${seconds} seconds ... what could it be ?`;
+    if(start === true){
+      var msg = `Something cool will happen in: ${seconds} seconds ... what could it be ?`;
+    } else {
+      var msg = `Countdown: ${(time.seconds === 0) ? 60 : seconds + 60} seconds.`;
+    }
+    document.getElementById('timeMessage').textContent = msg;
 
 }
 
@@ -92,21 +91,24 @@ const hourHand = (theTime, whichHand) => {
   var interval = setInterval(()=>{
     var currentTime = getTime()
 
-    // if(currentTime.minutes === 0 && currentTime.seconds === 0 && interaction === true){
-    //   soundHorn()
-    // }
-
-    // if(currentTime.seconds === 0 && interaction === true){
-    if(currentTime.seconds === 0 && interaction === true){
+    if(interaction === true && currentTime.seconds > 0 && currentTime.seconds < 28){
+      playable = true;
+    }
+    
+    if(currentTime.seconds === 0 && playable === true){
         soundHorn(currentTime)
     }
 
-    if(currentTime.seconds === 28 && interaction === true){
+    if(currentTime.seconds === 28 && playable === true){
         soundSaw()
     }
 
     updateDigitalClock(currentTime)
-    updateInfoMsg(currentTime)
+
+    //options under which the message will be displayed
+    if(interaction === true){
+      updateInfoMsg(currentTime,playable)
+    }
     secondHand(currentTime, 'secondHand')
     minuteHand(currentTime, 'minuteHand')
     hourHand(currentTime,'hourHand')
