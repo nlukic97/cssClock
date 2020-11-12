@@ -1,0 +1,15 @@
+section #circle {
+  width:200px!important;
+  height: 200px!important;
+  min-width:0px;
+  min-height: 0px;
+  border:15px solid #6c6060;
+  background: rgb(124,124,124);
+  background: linear-gradient(34deg, rgba(124,124,124,1) 0%, rgba(175,171,191,1) 50%);
+  border-radius: 50%;
+  position: relative;
+}
+
+#timeMessage {
+  padding: 0 60px;
+}
