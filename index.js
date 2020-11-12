@@ -6,6 +6,7 @@ document.addEventListener('click', function(){
 
 //so that the sound could be played
 document.getElementById('btn').addEventListener('click',function(){
+    interaction = true;
     document.getElementById('btn').remove()
     document.getElementById('btnContainer').remove()
 })
@@ -96,11 +97,11 @@ const hourHand = (theTime, whichHand) => {
     // }
 
     // if(currentTime.seconds === 0 && interaction === true){
-    if(currentTime.seconds === 0){
+    if(currentTime.seconds === 0 && interaction === true){
         soundHorn(currentTime)
     }
 
-    if(currentTime.seconds === 28){
+    if(currentTime.seconds === 28 && interaction === true){
         soundSaw()
     }
 
