@@ -22,7 +22,11 @@ const soundHorn = (time) =>{
 
 //plays the saw theme song
 const soundSaw = () =>{
-    document.getElementById('saw').play()
+  document.querySelector('section').classList.add('animateClock')
+  document.getElementById('saw').play()
+    setTimeout(function(){
+      document.querySelector('section').classList.remove('animateClock')
+    },32000)
 }
 
 // --- called 
@@ -112,6 +116,8 @@ const hourHand = (theTime, whichHand) => {
     secondHand(currentTime, 'secondHand')
     minuteHand(currentTime, 'minuteHand')
     hourHand(currentTime,'hourHand')
+
+    document.getElementById('tick').play() //playing the clock ticking
     
     intNum++;
 
