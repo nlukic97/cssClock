@@ -117,7 +117,9 @@ const hourHand = (theTime, whichHand) => {
     minuteHand(currentTime, 'minuteHand')
     hourHand(currentTime,'hourHand')
 
-    document.getElementById('tick').play() //playing the clock ticking
+    if(interaction === true){
+      document.getElementById('tick').play() //playing the clock ticking
+    }
     
     intNum++;
 
